@@ -1,7 +1,7 @@
 package ru.qwonix.cutesuite.calculator;
 
-public class Main {
+public class Start {
     public static void main(String[] args) {
-        HelloApplication.main(args);
+        RentalCalculatorApp.main(args);
     }
 }

@@ -25,7 +25,7 @@
                 <HBox spacing="5.0">
                     <Spinner fx:id="weekdaysSP" editable="true" onMouseClicked="#onDailyValueChanged" prefHeight="22.0" prefWidth="45.0">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="5" max="100" min="0" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="0" />
                         </valueFactory>
                     </Spinner>
                     <Label text="x" />
@@ -44,7 +44,7 @@
                     <Label text="x" textAlignment="CENTER" />
                     <Spinner fx:id="weekendsPercentSP" editable="true" onMouseClicked="#onDailyValueChanged" prefHeight="22.0" prefWidth="55.0">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="20" max="100" min="-100" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="-100" />
                         </valueFactory>
                     </Spinner>
                 </HBox>
@@ -57,7 +57,7 @@
                     <Label text="x" />
                     <Spinner fx:id="holidaysPercentSP" editable="true" onMouseClicked="#onDailyValueChanged" prefHeight="22.0" prefWidth="55.0">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="20" max="100" min="-100" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="-100" />
                         </valueFactory>
                     </Spinner>
                 </HBox>
@@ -66,7 +66,7 @@
                 <Label text="Недельная скидка" />
                 <Spinner fx:id="weeklyDiscountSP" editable="true" onMouseClicked="#onWeeklyDiscountValueChanged" prefHeight="22.0" prefWidth="55.0">
                     <valueFactory>
-                        <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="7" max="100" min="0" />
+                        <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="0" />
                     </valueFactory>
                 </Spinner>
 
@@ -79,7 +79,7 @@
                 <ToggleGroup fx:id="peopleCountSP" />
             </fx:define>
             <VBox>
-                <RadioButton onAction="#onSelectFourPeople" text="1 человек" userData="1">
+                <RadioButton onAction="#onSelectedPeopleCountChange" text="1 человек" userData="1">
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin>
@@ -92,18 +92,18 @@
                     <Spinner fx:id="percentPerOnePersonSP" editable="true" onMouseClicked="#onPercentPerOneChanged" prefHeight="22.0" prefWidth="55.0" userData="1">
 
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="-10" max="100" min="-100" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="-100" />
                         </valueFactory>
                     </Spinner>
-                    <Spinner fx:id="costPerOnePersonSP" editable="true" onMouseClicked="#onCostPerOneChanged" prefHeight="22.0" prefWidth="70.0">
+                    <Spinner fx:id="costPerOnePersonSP" editable="true" onMouseClicked="#onCostPerOnePersonChanged" prefHeight="22.0" prefWidth="70.0">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100" initialValue="900" max="100000" min="0" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100" initialValue="0" max="100000" min="0" />
                         </valueFactory>
                     </Spinner>
                 </VBox>
             </VBox>
             <VBox>
-                <RadioButton onAction="#onSelectFourPeople" selected="true" text="2 человека" toggleGroup="$peopleCountSP" userData="2">
+                <RadioButton onAction="#onSelectedPeopleCountChange" selected="true" text="2 человека" toggleGroup="$peopleCountSP" userData="2">
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin>
@@ -114,7 +114,7 @@
                             <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="-100" />
                         </valueFactory>
                     </Spinner>
-                    <Spinner fx:id="costPerTwoPersonSP" editable="true" onMouseClicked="#onCostPerTwoChanged" prefHeight="22.0" prefWidth="70.0">
+                    <Spinner fx:id="costPerTwoPersonSP" editable="true" onMouseClicked="#onCostPerTwoPersonsChanged" prefHeight="22.0" prefWidth="70.0">
                         <valueFactory>
                             <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100" initialValue="1000" max="100000" min="0" />
                         </valueFactory>
@@ -122,7 +122,7 @@
                 </VBox>
             </VBox>
             <VBox>
-                <RadioButton onAction="#onSelectFourPeople" text="3 человека" toggleGroup="$peopleCountSP" userData="3">
+                <RadioButton onAction="#onSelectedPeopleCountChange" text="3 человека" toggleGroup="$peopleCountSP" userData="3">
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin>
@@ -130,10 +130,10 @@
                 <VBox alignment="CENTER">
                     <Spinner fx:id="percentPerThreePersonSP" editable="true" onMouseClicked="#onPercentPerThreeChanged" prefHeight="22.0" prefWidth="55.0">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="20" max="100" min="-100" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="-100" />
                         </valueFactory>
                     </Spinner>
-                    <Spinner fx:id="costPerThreePersonSP" editable="true" onMouseClicked="#onCostPerThreeChanged" prefHeight="22.0" prefWidth="70.0">
+                    <Spinner fx:id="costPerThreePersonSP" editable="true" onMouseClicked="#onCostPerThreePersonsChanged" prefHeight="22.0" prefWidth="70.0">
                         <valueFactory>
                             <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100" initialValue="1200" max="100000" min="0" />
                         </valueFactory>
@@ -141,7 +141,7 @@
                 </VBox>
             </VBox>
             <VBox>
-                <RadioButton onAction="#onSelectFourPeople" text="4 человека" toggleGroup="$peopleCountSP" userData="4">
+                <RadioButton onAction="#onSelectedPeopleCountChange" text="4 человека" toggleGroup="$peopleCountSP" userData="4">
                     <VBox.margin>
                         <Insets bottom="5.0" />
                     </VBox.margin>
@@ -149,10 +149,10 @@
                 <VBox alignment="CENTER">
                     <Spinner fx:id="percentPerFourPersonSP" editable="true" onMouseClicked="#onPercentPerFourChanged" prefHeight="22.0" prefWidth="55.0">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="40" max="100" min="-100" />
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="100" min="-100" />
                         </valueFactory>
                     </Spinner>
-                    <Spinner fx:id="costPerFourPersonSP" editable="true" onMouseClicked="#onCostPerFourChanged" prefHeight="22.0" prefWidth="70.0">
+                    <Spinner fx:id="costPerFourPersonSP" editable="true" onMouseClicked="#onCostPerFourPersonsChanged" prefHeight="22.0" prefWidth="70.0">
                         <valueFactory>
                             <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100" initialValue="1400" max="100000" min="0" />
                         </valueFactory>
