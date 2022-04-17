@@ -1,0 +1,6 @@
+# Project exclude paths
+/target/
+/RentalCalculator.iml
+/src/main/resources/META-INF/
+/out/
+/.idea/
