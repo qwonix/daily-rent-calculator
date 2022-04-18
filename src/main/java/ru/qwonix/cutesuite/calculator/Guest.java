@@ -1,10 +1,10 @@
 package ru.qwonix.cutesuite.calculator;
 
 public enum Guest {
-    One(1, 900, -10),
-    Two(2, 1000, 0),
-    Three(3, 1200, 20),
-    Four(4, 1400, 40);
+    ONE(1, 900, -10),
+    TWO(2, 1000, 0),
+    THREE(3, 1200, 20),
+    FOUR(4, 1400, 40);
 
     final int personCount;
     private int cost;
@@ -28,18 +28,18 @@ public enum Guest {
         return cost;
     }
 
-    public void setCost(int cost) {
-        this.percent =
-                (int) Math.round(((cost / (double) Guest.Two.cost) - 1) * 100);
-        this.cost = cost;
-    }
-
     public int getPercent() {
         return percent;
     }
 
+    public void setCost(int cost) {
+        this.percent =
+                (int) Math.round(((cost / (double) Guest.TWO.cost) - 1) * 100);
+        this.cost = cost;
+    }
+
     public void setPercent(int percent) {
-        this.cost = (int) (Guest.Two.cost * (percent / 100d + 1));
+        this.cost = (int) (Guest.TWO.cost * (percent / 100d + 1));
         this.percent = percent;
     }
 }

@@ -61,49 +61,49 @@ public class Controller {
                 .setValue(model.getWeeklyDiscountPercent());
 
         costPerOnePersonSP.getValueFactory()
-                .setValue(Guest.One.getCost());
+                .setValue(Guest.ONE.getCost());
         costPerTwoPersonSP.getValueFactory()
-                .setValue(Guest.Two.getCost());
+                .setValue(Guest.TWO.getCost());
         costPerThreePersonSP.getValueFactory()
-                .setValue(Guest.Three.getCost());
+                .setValue(Guest.THREE.getCost());
         costPerFourPersonSP.getValueFactory()
-                .setValue(Guest.Four.getCost());
+                .setValue(Guest.FOUR.getCost());
 
         percentPerOnePersonSP.getValueFactory()
-                .setValue(Guest.One.getPercent());
+                .setValue(Guest.ONE.getPercent());
         percentPerTwoPersonSP.getValueFactory()
-                .setValue(Guest.Two.getPercent());
+                .setValue(Guest.TWO.getPercent());
         percentPerThreePersonSP.getValueFactory()
-                .setValue(Guest.Three.getPercent());
+                .setValue(Guest.THREE.getPercent());
         percentPerFourPersonSP.getValueFactory()
-                .setValue(Guest.Four.getPercent());
+                .setValue(Guest.FOUR.getPercent());
 
         weekdaysSP.getValueFactory()
-                .setValue(model.getWeekdaysCount());
+                .setValue(Day.WEEKDAY.count);
         weekdaysPercentSP.getValueFactory()
-                .setValue(model.getWeekdaysPercent());
+                .setValue(Day.WEEKDAY.percent);
         weekendsSP.getValueFactory()
-                .setValue(model.getWeekendsCount());
+                .setValue(Day.WEEKEND.count);
         weekendsPercentSP.getValueFactory()
-                .setValue(model.getWeekendsPercent());
+                .setValue(Day.WEEKEND.percent);
         holidaysSP.getValueFactory()
-                .setValue(model.getHolidaysCount());
+                .setValue(Day.HOLIDAY.count);
         holidaysPercentSP.getValueFactory()
-                .setValue(model.getHolidaysPercent());
+                .setValue(Day.HOLIDAY.percent);
 
         makeOrder();
     }
 
     @FXML
     protected void onDailyValueChanged() {
-        model.setWeekdaysCount(weekdaysSP.getValue());
-        model.setWeekdaysPercent(weekdaysPercentSP.getValue());
+        Day.WEEKDAY.count = weekdaysSP.getValue();
+        Day.WEEKDAY.percent = weekdaysPercentSP.getValue();
 
-        model.setWeekendsCount(weekendsSP.getValue());
-        model.setWeekendsPercent(weekendsPercentSP.getValue());
+        Day.WEEKEND.count = weekendsSP.getValue();
+        Day.WEEKEND.percent = weekendsPercentSP.getValue();
 
-        model.setHolidaysCount(holidaysSP.getValue());
-        model.setHolidaysPercent(holidaysPercentSP.getValue());
+        Day.HOLIDAY.count = holidaysSP.getValue();
+        Day.HOLIDAY.percent = holidaysPercentSP.getValue();
 
         makeOrder();
     }
@@ -113,10 +113,10 @@ public class Controller {
     protected void onCostPerOnePersonChanged() {
         int costPerOnePerson = costPerOnePersonSP.getValue();
 
-        Guest.One.setCost(costPerOnePerson);
+        Guest.ONE.setCost(costPerOnePerson);
 
         percentPerOnePersonSP.getValueFactory()
-                .setValue(Guest.One.getPercent());
+                .setValue(Guest.ONE.getPercent());
         makeOrder();
     }
 
@@ -124,7 +124,7 @@ public class Controller {
     protected void onCostPerTwoPersonsChanged() {
         int costPerTwoPerson = costPerTwoPersonSP.getValue();
 
-        Guest.Two.setCost(costPerTwoPerson);
+        Guest.TWO.setCost(costPerTwoPerson);
 
         onPercentPerOneChanged();
         onPercentPerTwoChanged();
@@ -137,10 +137,10 @@ public class Controller {
     protected void onCostPerThreePersonsChanged() {
         int costPerThreePerson = costPerThreePersonSP.getValue();
 
-        Guest.Three.setCost(costPerThreePerson);
+        Guest.THREE.setCost(costPerThreePerson);
 
         percentPerThreePersonSP.getValueFactory()
-                .setValue(Guest.Three.getPercent());
+                .setValue(Guest.THREE.getPercent());
         makeOrder();
     }
 
@@ -148,10 +148,10 @@ public class Controller {
     protected void onCostPerFourPersonsChanged() {
         int costPerFourPerson = costPerFourPersonSP.getValue();
 
-        Guest.Four.setCost(costPerFourPerson);
+        Guest.FOUR.setCost(costPerFourPerson);
 
         percentPerFourPersonSP.getValueFactory()
-                .setValue(Guest.Four.getPercent());
+                .setValue(Guest.FOUR.getPercent());
         makeOrder();
     }
 
@@ -159,40 +159,40 @@ public class Controller {
     @FXML
     protected void onPercentPerOneChanged() {
         int percentPerOnePerson = percentPerOnePersonSP.getValue();
-        Guest.One.setPercent(percentPerOnePerson);
+        Guest.ONE.setPercent(percentPerOnePerson);
 
         costPerOnePersonSP.getValueFactory()
-                .setValue(Guest.One.getCost());
+                .setValue(Guest.ONE.getCost());
         makeOrder();
     }
 
     @FXML
     protected void onPercentPerTwoChanged() {
         int percentPerTwoPerson = percentPerTwoPersonSP.getValue();
-        Guest.Two.setPercent(percentPerTwoPerson);
+        Guest.TWO.setPercent(percentPerTwoPerson);
 
         costPerTwoPersonSP.getValueFactory()
-                .setValue(Guest.Two.getCost());
+                .setValue(Guest.TWO.getCost());
         makeOrder();
     }
 
     @FXML
     protected void onPercentPerThreeChanged() {
         int percentPerThreePerson = percentPerThreePersonSP.getValue();
-        Guest.Three.setPercent(percentPerThreePerson);
+        Guest.THREE.setPercent(percentPerThreePerson);
 
         costPerThreePersonSP.getValueFactory()
-                .setValue(Guest.Three.getCost());
+                .setValue(Guest.THREE.getCost());
         makeOrder();
     }
 
     @FXML
     protected void onPercentPerFourChanged() {
         int percentPerFourPerson = percentPerFourPersonSP.getValue();
-        Guest.Four.setPercent(percentPerFourPerson);
+        Guest.FOUR.setPercent(percentPerFourPerson);
 
         costPerFourPersonSP.getValueFactory()
-                .setValue(Guest.Four.getCost());
+                .setValue(Guest.FOUR.getCost());
         makeOrder();
     }
 
