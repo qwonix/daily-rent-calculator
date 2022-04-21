@@ -7,12 +7,14 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Spinner;
 import javafx.scene.input.MouseEvent;
+import ru.qwonix.cutesuite.calculator.entity.Day;
+import ru.qwonix.cutesuite.calculator.entity.Guest;
 
 import java.util.List;
 
 public class Controller {
 
-    private final Model model = new Model();
+    private Model model;
     @FXML
     private Spinner<Integer> costPerFourPersonSP;
     @FXML
@@ -56,6 +58,7 @@ public class Controller {
 
     @FXML
     public void initialize() {
+        model = new Model();
 
         weeklyDiscountSP.getValueFactory()
                 .setValue(model.getWeeklyDiscountPercent());
@@ -79,31 +82,31 @@ public class Controller {
                 .setValue(Guest.FOUR.getPercent());
 
         weekdaysSP.getValueFactory()
-                .setValue(Day.WEEKDAY.count);
+                .setValue(Day.WEEKDAY.getCount());
         weekdaysPercentSP.getValueFactory()
-                .setValue(Day.WEEKDAY.percent);
+                .setValue(Day.WEEKDAY.getPercent());
         weekendsSP.getValueFactory()
-                .setValue(Day.WEEKEND.count);
+                .setValue(Day.WEEKEND.getCount());
         weekendsPercentSP.getValueFactory()
-                .setValue(Day.WEEKEND.percent);
+                .setValue(Day.WEEKEND.getPercent());
         holidaysSP.getValueFactory()
-                .setValue(Day.HOLIDAY.count);
+                .setValue(Day.HOLIDAY.getCount());
         holidaysPercentSP.getValueFactory()
-                .setValue(Day.HOLIDAY.percent);
+                .setValue(Day.HOLIDAY.getPercent());
 
         makeOrder();
     }
 
     @FXML
     protected void onDailyValueChanged() {
-        Day.WEEKDAY.count = weekdaysSP.getValue();
-        Day.WEEKDAY.percent = weekdaysPercentSP.getValue();
+        Day.WEEKDAY.setCount(weekdaysSP.getValue());
+        Day.WEEKDAY.setPercent(weekdaysPercentSP.getValue());
 
-        Day.WEEKEND.count = weekendsSP.getValue();
-        Day.WEEKEND.percent = weekendsPercentSP.getValue();
+        Day.WEEKEND.setCount(weekendsSP.getValue());
+        Day.WEEKEND.setPercent(weekendsPercentSP.getValue());
 
-        Day.HOLIDAY.count = holidaysSP.getValue();
-        Day.HOLIDAY.percent = holidaysPercentSP.getValue();
+        Day.HOLIDAY.setCount(holidaysSP.getValue());
+        Day.HOLIDAY.setPercent(holidaysPercentSP.getValue());
 
         makeOrder();
     }

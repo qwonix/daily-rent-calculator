@@ -1,4 +1,4 @@
-package ru.qwonix.cutesuite.calculator;
+package ru.qwonix.cutesuite.calculator.entity;
 
 public enum Guest {
     ONE(1, 900, -10),
@@ -7,9 +7,8 @@ public enum Guest {
     FOUR(4, 1400, 40);
 
     final int personCount;
-    private int cost;
-    private int percent;
-
+    protected int cost;
+    protected int percent;
     Guest(int personCount, int cost, int percent) {
         this.personCount = personCount;
         this.cost = cost;
@@ -24,18 +23,22 @@ public enum Guest {
         return null;
     }
 
-    public int getCost() {
-        return cost;
+    public int getPersonCount() {
+        return personCount;
     }
 
-    public int getPercent() {
-        return percent;
+    public int getCost() {
+        return cost;
     }
 
     public void setCost(int cost) {
         this.percent =
                 (int) Math.round(((cost / (double) Guest.TWO.cost) - 1) * 100);
         this.cost = cost;
+    }
+
+    public int getPercent() {
+        return percent;
     }
 
     public void setPercent(int percent) {

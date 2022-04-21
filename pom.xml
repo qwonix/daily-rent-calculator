@@ -15,9 +15,17 @@
         <javaVersion>11</javaVersion>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <json.version>20220320</json.version>
     </properties>
 
     <dependencies>
+        <!-- json -->
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -27,12 +35,6 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>18</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.calendarfx</groupId>
-            <artifactId>view</artifactId>
-            <version>11.10.6</version>
         </dependency>
 
         <dependency>
@@ -50,7 +52,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
+            <version>1.18.22</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
@@ -87,6 +89,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <goals>
