@@ -14,39 +14,20 @@ import java.util.List;
 
 public class Controller {
 
+    @FXML
+    public Spinner<Integer> weeklyDiscountSP;
     private Model model;
     @FXML
-    private Spinner<Integer> costPerFourPersonSP;
-    @FXML
-    private Spinner<Integer> percentPerFourPersonSP;
-    @FXML
-    private Spinner<Integer> costPerThreePersonSP;
-    @FXML
-    private Spinner<Integer> percentPerThreePersonSP;
-    @FXML
-    private Spinner<Integer> costPerTwoPersonSP;
-    @FXML
-    private Spinner<Integer> percentPerTwoPersonSP;
-    @FXML
-    private Spinner<Integer> costPerOnePersonSP;
-    @FXML
-    private Spinner<Integer> percentPerOnePersonSP;
+    private Spinner<Integer> costPerOnePersonSP, costPerTwoPersonSP, costPerThreePersonSP, costPerFourPersonSP;
 
     @FXML
-    public Spinner<Integer>  weeklyDiscountSP;
+    private Spinner<Integer> percentPerOnePersonSP, percentPerTwoPersonSP, percentPerThreePersonSP, percentPerFourPersonSP;
 
     @FXML
-    private Spinner<Integer> weekdaysSP;
+    private Spinner<Integer> weekdaysSP, holidaysSP, weekendsSP;
+
     @FXML
-    private Spinner<Integer> weekdaysPercentSP;
-    @FXML
-    private Spinner<Integer> holidaysSP;
-    @FXML
-    private Spinner<Integer> holidaysPercentSP;
-    @FXML
-    private Spinner<Integer> weekendsSP;
-    @FXML
-    private Spinner<Integer> weekendsPercentSP;
+    private Spinner<Integer> weekdaysPercentSP, holidaysPercentSP, weekendsPercentSP;
 
     @FXML
     private ListView<String> listView;

@@ -1,6 +1,7 @@
 package ru.qwonix.cutesuite.calculator.entity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileWriter;
@@ -14,34 +15,34 @@ import java.util.stream.Collectors;
 
 public abstract class Converter {
     public static void readFromJSON(String path) {
-        String s;
         try {
-            s = new String(Files.readAllBytes(Paths.get(path)));
-        } catch (IOException e) {
+            String s = new String(Files.readAllBytes(Paths.get(path)));
+
+            JSONObject jsonObject = new JSONObject(s);
+
+            JSONObject jsonGuest = jsonObject.getJSONObject("Guest");
+            JSONArray guestTypesJson = jsonGuest.names();
+            for (int i = 0; i < guestTypesJson.length(); i++) {
+                String guestType = guestTypesJson.getString(i);
+                JSONObject guest = jsonGuest.getJSONObject(guestType);
+
+                Guest.valueOf(guestType).cost = guest.getInt("cost");
+                Guest.valueOf(guestType).percent = guest.getInt("percent");
+            }
+
+            JSONObject jsonDay = jsonObject.getJSONObject("Day");
+            JSONArray daysTypesJson = jsonDay.names();
+            for (int i = 0; i < daysTypesJson.length(); i++) {
+                String dayType = daysTypesJson.getString(i);
+                JSONObject day = jsonDay.getJSONObject(dayType);
+
+                Day.valueOf(dayType).setCount(day.getInt("count"));
+                Day.valueOf(dayType).setPercent(day.getInt("percent"));
+            }
+
+        } catch (JSONException | IOException e) {
+            System.out.println(e.getMessage());
             writeToJSON(path);
-            return;
-        }
-
-        JSONObject jsonObject = new JSONObject(s);
-
-        JSONObject jsonGuest = jsonObject.getJSONObject("Guest");
-        JSONArray guestTypesJson = jsonGuest.names();
-        for (int i = 0; i < guestTypesJson.length(); i++) {
-            String guestType = guestTypesJson.getString(i);
-            JSONObject guest = jsonGuest.getJSONObject(guestType);
-
-            Guest.valueOf(guestType).cost = guest.getInt("cost");
-            Guest.valueOf(guestType).percent = guest.getInt("percent");
-        }
-
-        JSONObject jsonDay = jsonObject.getJSONObject("Day");
-        JSONArray daysTypesJson = jsonDay.names();
-        for (int i = 0; i < daysTypesJson.length(); i++) {
-            String dayType = daysTypesJson.getString(i);
-            JSONObject day = jsonDay.getJSONObject(dayType);
-
-            Day.valueOf(dayType).setCount(day.getInt("count"));
-            Day.valueOf(dayType).setPercent(day.getInt("percent"));
         }
     }
 
@@ -67,8 +68,7 @@ public abstract class Converter {
         try (PrintWriter out = new PrintWriter(new FileWriter(path))) {
             out.write(jsonObject.toString(3));
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
-
 }

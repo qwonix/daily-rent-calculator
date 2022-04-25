@@ -8,6 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class RentalCalculatorApp extends Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RentalCalculatorApp.class.getResource("rental-calculator.fxml"));
@@ -16,9 +20,5 @@ public class RentalCalculatorApp extends Application {
         stage.setTitle("Rental Calculator");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

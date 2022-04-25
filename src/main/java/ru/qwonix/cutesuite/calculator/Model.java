@@ -12,8 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 public class Model {
-
-    private final String PATH_TO_SETTING = "settings.json";
+    private static final String PATH_TO_SETTING = "settings.json";
     private Guest guest = Guest.TWO;
 
     private int weeklyDiscountPercent = 7;
