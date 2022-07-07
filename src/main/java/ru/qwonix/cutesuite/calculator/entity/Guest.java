@@ -7,8 +7,8 @@ public enum Guest {
     FOUR(4, 1400, 40);
 
     final int personCount;
-    protected int cost;
-    protected int percent;
+    int cost;
+    int percent;
 
     Guest(int personCount, int cost, int percent) {
         this.personCount = personCount;

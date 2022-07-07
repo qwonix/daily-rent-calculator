@@ -16,6 +16,7 @@ public class RentalCalculatorApp extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(RentalCalculatorApp.class.getResource("rental-calculator.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setMinWidth(450);
         stage.setAlwaysOnTop(true);
         stage.setTitle("Rental Calculator");
         stage.setScene(scene);

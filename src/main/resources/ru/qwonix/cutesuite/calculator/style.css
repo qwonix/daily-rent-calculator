@@ -2,3 +2,15 @@
     -fx-font-family: "Verdana";
     -fx-font-smoothing-type: lcd;
 }
+
+.lowSpinner {
+    -fx-pref-width: 55;
+    -fx-pref-height: 22;
+    -fx-min-width: 48
+}
+
+.highSpinner {
+    -fx-pref-width: 70;
+    -fx-pref-height: 22;
+    -fx-min-width: 48
+}
